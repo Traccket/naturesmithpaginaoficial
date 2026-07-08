@@ -92,6 +92,24 @@ export default function LeadForm() {
     );
   }, [datos]);
 
+  /** Mensaje de WhatsApp con la solicitud completa para el asesor. */
+  function mensajeWhatsApp(): string {
+    const lineas = [
+      `Hola, soy ${datos.nombre} y acabo de enviar una solicitud en la web de Nature Smith.`,
+      ``,
+      `• Tipo de aliado: ${datos.tipo}`,
+      datos.empresa && `• Empresa/marca: ${datos.empresa}`,
+      `• Ciudad: ${datos.ciudad}`,
+      `• Necesidad: ${datos.necesidad}`,
+      datos.volumen && `• Volumen estimado: ${datos.volumen}`,
+      datos.plataforma && `• Plataforma: ${datos.plataforma}`,
+      datos.mensaje && `• Mensaje: ${datos.mensaje}`,
+      ``,
+      `Mi correo: ${datos.correo}`,
+    ];
+    return lineas.filter(Boolean).join("\n");
+  }
+
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -106,7 +124,7 @@ export default function LeadForm() {
         const body = await res.json().catch(() => null);
         throw new Error(body?.error ?? "No pudimos enviar tu solicitud.");
       }
-      router.push("/gracias");
+      router.push(`/gracias?wa=${encodeURIComponent(mensajeWhatsApp())}`);
     } catch (err) {
       setError(
         err instanceof Error
