@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { guardarLead } from "@/lib/leads";
 
 /**
  * Recepción de leads del formulario.
@@ -78,6 +79,14 @@ export async function POST(req: NextRequest) {
         { status: 403 }
       );
     }
+  }
+
+  // Guardado en el almacén privado (visible en /panel)
+  try {
+    await guardarLead(lead);
+  } catch (err) {
+    console.error("[lead] fallo el guardado en el almacén:", err);
+    // No bloquear al usuario: el flujo de WhatsApp sigue funcionando
   }
 
   // Respaldo del lead en webhook externo si está configurado
