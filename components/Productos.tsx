@@ -15,8 +15,9 @@ const categorias = [
 
 export default function Productos() {
   return (
-    <section id="productos" className="bg-cream py-24 text-ink lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+    <section id="productos" className="px-3 py-2 lg:px-5">
+      <div className="mx-auto rounded-[2rem] bg-cream py-24 text-ink lg:rounded-[2.75rem] lg:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <SectionHeading
           light
           kicker="Productos y categorías"
@@ -26,7 +27,7 @@ export default function Productos() {
         <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categorias.map((c, i) => (
             <Reveal key={c.nombre} delay={(i % 4) * 0.06}>
-              <div className="group relative h-full overflow-hidden rounded-2xl border border-ink/10 bg-white p-6 transition-all duration-300 hover:border-sage/50 hover:shadow-sm">
+              <div className="group card-shine relative h-full overflow-hidden rounded-2xl border border-ink/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sage/50 hover:shadow-lg hover:shadow-sage/10">
                 {/* Marca de agua orgánica */}
                 <svg
                   viewBox="0 0 100 100"
@@ -56,6 +57,7 @@ export default function Productos() {
             profesional de la salud.
           </p>
         </Reveal>
+        </div>
       </div>
     </section>
   );

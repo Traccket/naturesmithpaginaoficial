@@ -122,8 +122,8 @@ export default function ClientSelector() {
                     onClick={() => setActivo(p)}
                     className={`group rounded-xl border px-5 py-4 text-left transition-all duration-300 ${
                       isActive
-                        ? "border-champagne/50 bg-graphite"
-                        : "border-cream/8 bg-transparent hover:border-cream/20"
+                        ? "border-champagne/60 bg-graphite shadow-[0_0_28px_rgba(221,211,180,0.08)]"
+                        : "border-cream/8 bg-transparent hover:-translate-y-0.5 hover:border-cream/25"
                     }`}
                   >
                     <span

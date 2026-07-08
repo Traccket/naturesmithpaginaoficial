@@ -14,7 +14,7 @@ export default function Confianza() {
         <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
           {/* MasterShop */}
           <Reveal>
-            <div className="flex h-full min-h-[130px] flex-col items-center justify-center gap-3 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-colors duration-300 hover:border-cream/20">
+            <div className="card-shine flex h-full min-h-[130px] flex-col items-center justify-center gap-3 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-cream/25">
               <MasterShopLogo className="h-8 w-auto text-cream" />
               <p className="text-[0.7rem] tracking-[0.14em] text-mineral uppercase">
                 Bodega insignia oro
@@ -24,7 +24,7 @@ export default function Confianza() {
 
           {/* Droppi */}
           <Reveal delay={0.07}>
-            <div className="flex h-full min-h-[130px] flex-col items-center justify-center gap-3 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-colors duration-300 hover:border-cream/20">
+            <div className="card-shine flex h-full min-h-[130px] flex-col items-center justify-center gap-3 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-cream/25">
               <div className="flex items-center gap-2.5">
                 <DroppiLogo className="h-10 w-10" />
                 <span className="font-display text-2xl text-cream/90">Droppi</span>
@@ -37,7 +37,7 @@ export default function Confianza() {
 
           {/* Maquilas */}
           <Reveal delay={0.14}>
-            <div className="flex h-full min-h-[130px] flex-col items-center justify-center gap-2 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-colors duration-300 hover:border-cream/20">
+            <div className="card-shine flex h-full min-h-[130px] flex-col items-center justify-center gap-2 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-cream/25">
               <p className="font-display text-lg text-cream/85">Marcas de maquila</p>
               <p className="text-[0.7rem] tracking-[0.14em] text-mineral uppercase">
                 Producción y desarrollo
@@ -47,7 +47,7 @@ export default function Confianza() {
 
           {/* Canal naturista */}
           <Reveal delay={0.21}>
-            <div className="flex h-full min-h-[130px] flex-col items-center justify-center gap-2 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-colors duration-300 hover:border-cream/20">
+            <div className="card-shine flex h-full min-h-[130px] flex-col items-center justify-center gap-2 rounded-xl border border-cream/8 bg-ink px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-cream/25">
               <p className="font-display text-lg text-cream/85">Tiendas naturistas</p>
               <p className="text-[0.7rem] tracking-[0.14em] text-mineral uppercase">
                 Canal mayorista

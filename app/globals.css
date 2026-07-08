@@ -23,6 +23,58 @@ h3 {
   font-weight: 600;
 }
 
+/* Las anclas no quedan tapadas por el header fijo */
+section[id],
+span[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Aurora de luz del hero */
+@keyframes aurora-a {
+  to {
+    transform: translate(70px, 45px) scale(1.18);
+  }
+}
+@keyframes aurora-b {
+  to {
+    transform: translate(-60px, -35px) scale(1.12);
+  }
+}
+.aurora-a {
+  animation: aurora-a 16s ease-in-out infinite alternate;
+}
+.aurora-b {
+  animation: aurora-b 21s ease-in-out infinite alternate;
+}
+
+/* Grano fino tipo papel */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* Brillo que barre las tarjetas al pasar el mouse */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 42%,
+    rgba(221, 211, 180, 0.1) 50%,
+    transparent 58%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+.card-shine:hover::after {
+  transform: translateX(120%);
+}
+
 /* Cinta en movimiento */
 @keyframes marquee {
   to {

@@ -17,8 +17,9 @@ const idealPara = [
 
 export default function Mayoristas() {
   return (
-    <section id="mayoristas" className="bg-cream py-24 text-ink lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+    <section id="mayoristas" className="px-3 py-2 lg:px-5">
+      <div className="mx-auto rounded-[2rem] bg-cream py-24 text-ink lg:rounded-[2.75rem] lg:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading
@@ -66,6 +67,7 @@ export default function Mayoristas() {
               </p>
             </div>
           </Reveal>
+        </div>
         </div>
       </div>
     </section>

@@ -63,11 +63,17 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Halo de luz delicado */}
+      {/* Aurora de luz en movimiento */}
       <div
-        className="pointer-events-none absolute top-[-20%] left-[10%] h-[60vh] w-[60vh] rounded-full bg-sage/[0.05] blur-[120px]"
+        className="aurora-a pointer-events-none absolute top-[-18%] left-[8%] h-[58vh] w-[58vh] rounded-full bg-sage/[0.09] blur-[110px]"
         aria-hidden="true"
       />
+      <div
+        className="aurora-b pointer-events-none absolute right-[15%] bottom-[-15%] h-[48vh] w-[48vh] rounded-full bg-champagne/[0.07] blur-[110px]"
+        aria-hidden="true"
+      />
+      {/* Grano fino tipo papel */}
+      <div className="grain pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden="true" />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-20 lg:px-8">
         <motion.p
@@ -89,7 +95,9 @@ export default function Hero() {
           <br />
           Distribución real.
           <br />
-          <span className="text-olive">Operación lista para escalar.</span>
+          <span className="bg-gradient-to-r from-olive via-champagne to-olive bg-clip-text text-transparent">
+            Operación lista para escalar.
+          </span>
         </motion.h1>
 
         <motion.p
@@ -106,12 +114,12 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.55 }}
-          className="mt-9 flex flex-wrap gap-x-6 gap-y-3"
+          className="mt-9 flex flex-wrap gap-2.5"
         >
           {badges.map((b) => (
             <li
               key={b}
-              className="flex items-center gap-2 text-[0.78rem] font-medium text-cream/80"
+              className="flex items-center gap-2 rounded-full border border-cream/12 bg-cream/[0.04] px-4 py-2 text-[0.78rem] font-medium text-cream/90 backdrop-blur-sm"
             >
               <span className="h-1 w-1 rounded-full bg-champagne" aria-hidden="true" />
               {b}
