@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464 340" role="img" aria-label="Nature Smith">
-  <rect width="464" height="340" fill="#050505"/>
-  <g stroke="#F5F1EA" stroke-width="7.5" stroke-linecap="round" fill="none">
-    <path d="M118 88 C114 78 106 78 101 88 C92 110 88 172 88 206 C88 226 96 232 104 224 C110 217 106 206 98 208 C102 196 138 104 164 64 C172 51 182 53 182 65 C182 93 162 186 153 228 C150 241 155 243 162 229 C179 193 212 105 227 71 C235 55 245 55 245 69 C245 97 228 194 221 242 C218 260 222 272 234 274"/>
-    <path d="M316 100 C302 90 298 68 310 53 C321 40 343 39 353 51 C363 63 359 84 346 102 C330 126 282 168 254 200 C238 218 234 236 236 246 C232 260 246 268 250 254 C253 243 242 236 234 243 C252 251 302 247 346 237 C364 232 382 220 392 204"/>
-  </g>
-  <text x="232" y="322" text-anchor="middle" fill="#F5F1EA" font-family="Helvetica, Arial, sans-serif" font-size="21" letter-spacing="12">NATURE SMITH</text>
-</svg>

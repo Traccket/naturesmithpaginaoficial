@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -9,7 +10,6 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import NSMonogram from "./NSMonogram";
 
 const badges = [
   "+15 años en distribución naturista",
@@ -22,7 +22,7 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
-  // Parallax sutil del monograma siguiendo el mouse
+  // Parallax sutil de la firma NS siguiendo el mouse
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 40, damping: 20 });
@@ -44,15 +44,22 @@ export default function Hero() {
       onMouseMove={onMove}
       className="texture-mineral relative flex min-h-svh items-center overflow-hidden"
     >
-      {/* Monograma de fondo como pieza artística */}
+      {/* Firma NS real como pieza artística de fondo */}
       <motion.div
         style={reduce ? undefined : { x: tx, y: ty }}
-        className="pointer-events-none absolute top-1/2 right-[-8%] hidden -translate-y-1/2 md:block"
+        initial={reduce ? undefined : { opacity: 0, scale: 0.96 }}
+        animate={reduce ? undefined : { opacity: 1, scale: 1 }}
+        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute top-1/2 right-[-4%] hidden -translate-y-1/2 md:block"
         aria-hidden="true"
       >
-        <NSMonogram
-          animated
-          className="h-[70vh] w-auto text-cream/[0.06] lg:h-[85vh]"
+        <Image
+          src="/ns-firma.png"
+          alt=""
+          width={700}
+          height={700}
+          priority
+          className="h-[64vh] w-auto opacity-20 lg:h-[76vh]"
         />
       </motion.div>
 
@@ -76,26 +83,23 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl font-display text-[2.6rem] leading-[1.05] text-cream sm:text-6xl lg:text-7xl"
+          className="max-w-4xl font-display text-[2.4rem] leading-[1.06] text-white sm:text-5xl lg:text-6xl"
         >
           Productos naturales.
           <br />
           Distribución real.
           <br />
-          <span className="text-olive italic">
-            Operación lista para escalar.
-          </span>
+          <span className="text-olive">Operación lista para escalar.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="mt-7 max-w-2xl text-base leading-relaxed text-mineral sm:text-lg"
+          className="mt-7 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg"
         >
-          Nature Smith conecta tiendas naturistas, vendedores ecommerce,
-          dropshippers y marcas con una bodega confiable, catálogo mayorista,
-          productos exclusivos y servicio comercial de alto nivel en Colombia.
+          Bodega confiable, catálogo mayorista y productos exclusivos para
+          tiendas naturistas, vendedores ecommerce, dropshippers y marcas.
         </motion.p>
 
         <motion.ul
@@ -107,7 +111,7 @@ export default function Hero() {
           {badges.map((b) => (
             <li
               key={b}
-              className="flex items-center gap-2 text-[0.78rem] font-medium text-cream/70"
+              className="flex items-center gap-2 text-[0.78rem] font-medium text-cream/80"
             >
               <span className="h-1 w-1 rounded-full bg-champagne" aria-hidden="true" />
               {b}
@@ -123,19 +127,19 @@ export default function Hero() {
         >
           <Link
             href="#contacto"
-            className="rounded-full bg-cream px-7 py-3.5 text-center text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:bg-white"
+            className="rounded-full bg-white px-7 py-3.5 text-center text-sm font-semibold text-ink transition-all hover:-translate-y-0.5"
           >
             Quiero el catálogo mayorista
           </Link>
           <Link
             href="#ecommerce"
-            className="rounded-full border border-sage/50 px-7 py-3.5 text-center text-sm font-medium text-cream transition-all hover:-translate-y-0.5 hover:border-sage"
+            className="rounded-full border border-cream/40 px-7 py-3.5 text-center text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:border-cream"
           >
             Quiero vender por ecommerce
           </Link>
           <Link
             href="#maquilas"
-            className="rounded-full border border-champagne/40 px-7 py-3.5 text-center text-sm font-medium text-champagne transition-all hover:-translate-y-0.5 hover:border-champagne"
+            className="rounded-full border border-champagne/50 px-7 py-3.5 text-center text-sm font-medium text-champagne transition-all hover:-translate-y-0.5 hover:border-champagne"
           >
             Quiero fabricar mi marca
           </Link>

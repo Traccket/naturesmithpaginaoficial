@@ -2,10 +2,8 @@ import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 const pilares = [
-  "Equipo comercial preparado para resolver dudas",
-  "Acompañamiento a tiendas, vendedores y marcas",
   "Comunicación ágil por WhatsApp y canales digitales",
-  "Apoyo para cerrar negocios",
+  "Acompañamiento a tiendas, vendedores y marcas para cerrar negocios",
   "Seguimiento y relación a largo plazo",
 ];
 

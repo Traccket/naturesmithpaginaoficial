@@ -3,11 +3,9 @@ import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 const puntos = [
-  "Productos naturales y suplementos para bienestar, con referencias de rotación probada.",
-  "Catálogo construido para tiendas naturistas: presentaciones, precios y surtido pensados para mostrador.",
-  "Atención comercial real: un asesor que resuelve dudas, cotiza y cierra el pedido contigo.",
-  "Cobertura nacional en Colombia, de capitales a municipios intermedios.",
-  "Relación de largo plazo: más de 15 años abasteciendo al canal naturista.",
+  "Catálogo con referencias de rotación probada, pensado para mostrador y margen de tienda física.",
+  "Un asesor comercial que resuelve dudas, cotiza y cierra el pedido contigo.",
+  "Cobertura nacional: más de 15 años abasteciendo al canal naturista en toda Colombia.",
 ];
 
 const idealPara = [

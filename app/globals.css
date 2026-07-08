@@ -5,14 +5,22 @@
   --color-ink: #050505;
   --color-ink-2: #0a0a0a;
   --color-graphite: #1a1a1a;
-  --color-cream: #f5f1ea;
+  --color-cream: #f7f4ee;
   --color-sage: #6f8065;
-  --color-olive: #a3a678;
-  --color-champagne: #cbbf9a;
-  --color-mineral: #8c8c84;
+  --color-olive: #b4b78d;
+  --color-champagne: #d6cbaa;
+  --color-mineral: #b0b0a8;
 
-  --font-display: var(--font-instrument), "Instrument Serif", Georgia, serif;
+  --font-display: var(--font-grotesk), "Space Grotesk", system-ui, sans-serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+}
+
+/* Titulares: sans moderna, peso medio, tracking ajustado */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.015em;
+  font-weight: 500;
 }
 
 html {

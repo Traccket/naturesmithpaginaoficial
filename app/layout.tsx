@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { faqs, site } from "@/lib/site";
 import "./globals.css";
 
-const instrument = Instrument_Serif({
+const grotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
+  variable: "--font-grotesk",
   display: "swap",
 });
 
@@ -53,7 +51,7 @@ const jsonLd = {
       name: "Nature Smith",
       alternateName: "NatureSmith",
       url: site.url,
-      logo: `${site.url}/logo-ns.svg`,
+      logo: `${site.url}/logo-lockup.png`,
       description: site.descripcion,
       areaServed: { "@type": "Country", name: "Colombia" },
       ...(sameAs.length ? { sameAs } : {}),
@@ -95,7 +93,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es-CO" className={`${instrument.variable} ${manrope.variable}`}>
+    <html lang="es-CO" className={`${grotesk.variable} ${manrope.variable}`}>
       <body>
         {children}
         <script

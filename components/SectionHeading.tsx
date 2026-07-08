@@ -22,7 +22,7 @@ export default function SectionHeading({
       </p>
       <h2
         className={`max-w-3xl font-display text-3xl leading-[1.12] sm:text-4xl lg:text-[2.75rem] ${
-          light ? "text-ink" : "text-cream"
+          light ? "text-ink" : "text-white"
         }`}
       >
         {title}
@@ -30,7 +30,7 @@ export default function SectionHeading({
       {subtitle && (
         <p
           className={`mt-5 max-w-2xl text-base leading-relaxed ${
-            light ? "text-ink/60" : "text-mineral"
+            light ? "text-ink/60" : "text-cream/80"
           }`}
         >
           {subtitle}

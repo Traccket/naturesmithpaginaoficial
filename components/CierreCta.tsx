@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "./Reveal";
-import NSMonogram from "./NSMonogram";
 import { waLink } from "@/lib/site";
 
 export default function CierreCta() {
@@ -10,17 +10,23 @@ export default function CierreCta() {
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
         aria-hidden="true"
       >
-        <NSMonogram className="h-[130%] w-auto text-cream/[0.04]" />
+        <Image
+          src="/ns-firma.png"
+          alt=""
+          width={700}
+          height={700}
+          className="h-[120%] w-auto opacity-15"
+        />
       </div>
 
       <div className="relative mx-auto max-w-4xl px-5 text-center lg:px-8">
         <Reveal>
-          <h2 className="font-display text-4xl leading-[1.08] text-cream sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.08] text-white sm:text-5xl">
             Construyamos tu próximo
             <br />
-            <span className="text-olive italic">canal de venta natural.</span>
+            <span className="text-olive">canal de venta natural.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-mineral">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/80">
             Ya sea una tienda, un ecommerce o una marca propia, Nature Smith
             tiene la operación para acompañarte.
           </p>
@@ -30,7 +36,7 @@ export default function CierreCta() {
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="#contacto"
-              className="rounded-full bg-cream px-8 py-4 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:bg-white"
+              className="rounded-full bg-white px-8 py-4 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5"
             >
               Solicitar catálogo
             </Link>
@@ -38,13 +44,13 @@ export default function CierreCta() {
               href={waLink("Hola, quiero hablar con un asesor de Nature Smith.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-sage/50 px-8 py-4 text-sm font-medium text-cream transition-all hover:-translate-y-0.5 hover:border-sage"
+              className="rounded-full border border-cream/40 px-8 py-4 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:border-cream"
             >
               Hablar por WhatsApp
             </a>
             <Link
               href="#contacto?intent=maquila"
-              className="rounded-full border border-champagne/40 px-8 py-4 text-sm font-medium text-champagne transition-all hover:-translate-y-0.5 hover:border-champagne"
+              className="rounded-full border border-champagne/50 px-8 py-4 text-sm font-medium text-champagne transition-all hover:-translate-y-0.5 hover:border-champagne"
             >
               Cotizar maquila
             </Link>

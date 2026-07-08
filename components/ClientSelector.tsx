@@ -24,7 +24,6 @@ const perfiles: Perfil[] = [
     cta: { label: "Ver solución mayorista", href: "#mayoristas" },
     beneficios: [
       "Catálogo mayorista con productos naturales y suplementos de rotación probada.",
-      "Precios y condiciones pensados para el margen de una tienda física.",
       "Asesor comercial asignado que responde, cotiza y cierra el pedido contigo.",
       "Cobertura nacional: tu pedido llega a tu ciudad, no solo a las capitales.",
     ],
@@ -44,7 +43,6 @@ const perfiles: Perfil[] = [
     beneficios: [
       "Bodega activa en MasterShop (insignia oro), Droppi y otras plataformas.",
       "Inventario real y comunicación rápida: sabes qué hay antes de pautar.",
-      "Despachos preparados para el ritmo del ecommerce, no el del mayoreo tradicional.",
       "Acompañamiento comercial para elegir productos con potencial de venta digital.",
     ],
     proceso: [
@@ -63,7 +61,6 @@ const perfiles: Perfil[] = [
     beneficios: [
       "Gestión de maquila con aliados y laboratorios según el tipo de producto.",
       "Visión comercial desde el día uno: el producto nace pensado para venderse.",
-      "Acompañamiento en presentación y empaque con estándar profesional.",
       "Experiencia con marcas y clientes del mundo ecommerce.",
     ],
     proceso: [
@@ -83,7 +80,6 @@ const perfiles: Perfil[] = [
       "Líneas exclusivas desarrolladas para el canal ecommerce.",
       "Productos seleccionados por comportamiento comercial, no por moda.",
       "Menos competencia directa: referencias que no están en cualquier bodega.",
-      "Información clara de cada línea para que puedas construir tu oferta.",
     ],
     proceso: [
       "Nos cuentas tu canal y tu público",

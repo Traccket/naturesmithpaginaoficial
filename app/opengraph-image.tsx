@@ -17,8 +17,8 @@ export default function OgImage() {
           justifyContent: "center",
           padding: "80px",
           background: "#050505",
-          color: "#F5F1EA",
-          fontFamily: "Georgia, serif",
+          color: "#F7F4EE",
+          fontFamily: "Arial, sans-serif",
         }}
       >
         <div
