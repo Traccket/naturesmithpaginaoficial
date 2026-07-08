@@ -48,12 +48,12 @@ export default function CierreCta() {
             >
               Hablar por WhatsApp
             </a>
-            <Link
-              href="#contacto?intent=maquila"
+            <a
+              href="#contacto-maquila"
               className="rounded-full border border-champagne/50 px-8 py-4 text-sm font-medium text-champagne transition-all hover:-translate-y-0.5 hover:border-champagne"
             >
               Cotizar maquila
-            </Link>
+            </a>
           </div>
         </Reveal>
       </div>

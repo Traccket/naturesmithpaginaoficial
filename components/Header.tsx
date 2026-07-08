@@ -64,12 +64,12 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          <Link
-            href="#contacto?intent=maquila"
+          <a
+            href="#contacto-maquila"
             className="rounded-full border border-champagne/40 px-5 py-2.5 text-[0.8rem] font-medium text-champagne transition-all hover:border-champagne hover:bg-champagne/5"
           >
             Cotizar maquila
-          </Link>
+          </a>
           <Link
             href="#contacto"
             className="rounded-full bg-cream px-5 py-2.5 text-[0.8rem] font-semibold text-ink transition-all hover:bg-white"
@@ -133,13 +133,13 @@ export default function Header() {
               >
                 Solicitar catálogo
               </Link>
-              <Link
-                href="#contacto?intent=maquila"
+              <a
+                href="#contacto-maquila"
                 onClick={() => setOpen(false)}
                 className="block rounded-full border border-champagne/40 py-3.5 text-center text-sm font-medium text-champagne"
               >
                 Cotizar maquila
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

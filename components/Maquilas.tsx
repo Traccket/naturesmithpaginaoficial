@@ -53,12 +53,12 @@ export default function Maquilas() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <Link
-                href="#contacto?intent=maquila"
+              <a
+                href="#contacto-maquila"
                 className="mt-8 inline-block rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5"
               >
                 Cotizar mi maquila
-              </Link>
+              </a>
             </Reveal>
           </div>
 

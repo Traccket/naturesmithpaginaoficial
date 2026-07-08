@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { faqs, site } from "@/lib/site";
 import "./globals.css";
 
-const grotesk = Space_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-grotesk",
+  variable: "--font-display-var",
   display: "swap",
 });
 
@@ -93,7 +93,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es-CO" className={`${grotesk.variable} ${manrope.variable}`}>
+    <html lang="es-CO" className={`${jakarta.variable} ${manrope.variable}`}>
       <body>
         {children}
         <script

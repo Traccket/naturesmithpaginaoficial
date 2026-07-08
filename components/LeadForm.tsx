@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
@@ -77,6 +77,20 @@ export default function LeadForm() {
     datos.tipo === "Vendedor ecommerce" || datos.tipo === "Dropshipper";
   const cta = ctaPorTipo[datos.tipo] ?? "Enviar solicitud";
 
+  // Los botones "Cotizar maquila" llegan con #contacto-maquila:
+  // preseleccionamos el perfil y saltamos directo a los datos de contacto.
+  useEffect(() => {
+    function aplicarIntencion() {
+      if (window.location.hash === "#contacto-maquila") {
+        setDatos((d) => ({ ...d, tipo: "Marca interesada en maquila" }));
+        setPaso(1);
+      }
+    }
+    aplicarIntencion();
+    window.addEventListener("hashchange", aplicarIntencion);
+    return () => window.removeEventListener("hashchange", aplicarIntencion);
+  }, []);
+
   const set = (k: keyof Datos) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setDatos((d) => ({ ...d, [k]: e.target.value }));
@@ -137,7 +151,9 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="contacto" className="texture-mineral border-t border-cream/6 bg-ink-2 py-24 lg:py-32">
+    <section id="contacto" className="texture-mineral relative border-t border-cream/6 bg-ink-2 py-24 lg:py-32">
+      {/* Ancla para los CTAs de maquila (en flujo, altura cero) */}
+      <span id="contacto-maquila" className="block h-0" aria-hidden="true" />
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
         <SectionHeading
           kicker="Contacto comercial"

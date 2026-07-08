@@ -18,11 +18,12 @@ const mensajes = [
 
 export default function Soporte() {
   return (
-    <section className="border-t border-cream/6 py-24 lg:py-32">
+    <section className="bg-cream py-24 text-ink lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading
+              light
               kicker="Servicio como diferencial"
               title="El soporte que convierte una bodega en un aliado."
               subtitle="Distribuir es fácil de prometer. Responder rápido, resolver y acompañar cada cierre es lo que sostiene una relación comercial."
@@ -30,8 +31,8 @@ export default function Soporte() {
             <Reveal delay={0.15}>
               <ul className="mt-10 space-y-4">
                 {pilares.map((p) => (
-                  <li key={p} className="flex gap-3 text-[0.92rem] leading-relaxed text-cream/75">
-                    <span className="mt-2 h-px w-5 shrink-0 bg-sage" aria-hidden="true" />
+                  <li key={p} className="flex gap-3 text-[0.95rem] leading-relaxed text-ink/70">
+                    <span className="mt-2.5 h-px w-5 shrink-0 bg-sage" aria-hidden="true" />
                     {p}
                   </li>
                 ))}
@@ -41,18 +42,18 @@ export default function Soporte() {
 
           {/* Centro de operaciones: inbox abstracto */}
           <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-cream/10 bg-graphite/70">
-              <div className="flex items-center justify-between border-b border-cream/8 px-6 py-4">
+            <div className="overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm">
+              <div className="flex items-center justify-between border-b border-ink/8 px-6 py-4">
                 <div className="flex items-center gap-3">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-sage" />
                   </span>
-                  <p className="text-[0.78rem] font-semibold tracking-[0.18em] text-cream/80 uppercase">
+                  <p className="text-[0.78rem] font-semibold tracking-[0.18em] text-ink/70 uppercase">
                     Mesa comercial — en línea
                   </p>
                 </div>
-                <p className="text-[0.7rem] text-mineral">respuesta ágil</p>
+                <p className="text-[0.7rem] text-ink/40">respuesta ágil</p>
               </div>
 
               <div className="space-y-3 px-6 py-7">
@@ -62,8 +63,8 @@ export default function Soporte() {
                       <p
                         className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-[0.82rem] leading-relaxed ${
                           m.de === "ns"
-                            ? "rounded-br-sm bg-sage/20 text-cream/90"
-                            : "rounded-bl-sm bg-ink text-mineral"
+                            ? "rounded-br-sm bg-sage/15 text-ink/85"
+                            : "rounded-bl-sm bg-ink/5 text-ink/60"
                         }`}
                       >
                         {m.texto}
@@ -73,7 +74,7 @@ export default function Soporte() {
                 ))}
               </div>
 
-              <p className="border-t border-cream/8 px-6 py-3 text-[0.68rem] tracking-wide text-mineral/60">
+              <p className="border-t border-ink/8 px-6 py-3 text-[0.68rem] tracking-wide text-ink/35">
                 Conversación ilustrativa. Sin datos reales de clientes.
               </p>
             </div>

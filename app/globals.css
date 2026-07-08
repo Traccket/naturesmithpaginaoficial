@@ -7,20 +7,39 @@
   --color-graphite: #1a1a1a;
   --color-cream: #f7f4ee;
   --color-sage: #6f8065;
-  --color-olive: #b4b78d;
-  --color-champagne: #d6cbaa;
-  --color-mineral: #b0b0a8;
+  --color-olive: #bcbf93;
+  --color-champagne: #ddd3b4;
+  --color-mineral: #bdbdb5;
 
-  --font-display: var(--font-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-display: var(--font-display-var), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
 }
 
-/* Titulares: sans moderna, peso medio, tracking ajustado */
+/* Titulares: sans profesional con peso, tracking ajustado */
 h1,
 h2,
 h3 {
-  letter-spacing: -0.015em;
-  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Cinta en movimiento */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
 }
 
 html {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
@@ -95,6 +95,20 @@ const pasos = [
 
 export default function SystemFlow() {
   const [activo, setActivo] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const reduce = useReducedMotion();
+
+  // El flujo avanza solo cada 3 segundos hasta que el usuario interactúa
+  useEffect(() => {
+    if (!autoplay || reduce) return;
+    const t = setInterval(() => setActivo((a) => (a + 1) % pasos.length), 3000);
+    return () => clearInterval(t);
+  }, [autoplay, reduce]);
+
+  function seleccionar(i: number) {
+    setAutoplay(false);
+    setActivo(i);
+  }
 
   return (
     <section id="operacion" className="texture-mineral border-t border-cream/6 bg-ink-2 py-24 lg:py-32">
@@ -116,7 +130,7 @@ export default function SystemFlow() {
                   <li key={p.titulo} className="relative lg:px-2">
                     <button
                       type="button"
-                      onClick={() => setActivo(i)}
+                      onClick={() => seleccionar(i)}
                       aria-pressed={isActive}
                       className="group flex w-full flex-col items-start gap-3 rounded-lg p-2 text-left lg:items-center lg:text-center"
                     >

@@ -56,20 +56,20 @@ function Contador({
 
 export default function Metrics() {
   return (
-    <section className="border-t border-cream/6 py-20 lg:py-24">
+    <section className="bg-cream py-20 text-ink lg:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3 lg:grid-cols-6">
           {metricas.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.06}>
-              <div className="border-l border-champagne/25 pl-4">
-                <p className="font-display text-3xl text-cream lg:text-4xl">
+              <div className="border-l-2 border-sage/40 pl-4">
+                <p className="font-display text-3xl text-ink lg:text-4xl">
                   {"valor" in m ? (
                     <Contador valor={m.valor} prefijo={m.prefijo} sufijo={m.sufijo} />
                   ) : (
                     m.texto
                   )}
                 </p>
-                <p className="mt-2 text-[0.78rem] leading-snug text-mineral">
+                <p className="mt-2 text-[0.78rem] leading-snug text-ink/55">
                   {m.label}
                 </p>
               </div>

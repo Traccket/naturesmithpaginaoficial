@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
+import ScrollProgress from "@/components/ScrollProgress";
 import ClientSelector from "@/components/ClientSelector";
 import Metrics from "@/components/Metrics";
 import SystemFlow from "@/components/SystemFlow";
@@ -19,9 +21,11 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Header />
       <main>
         <Hero />
+        <Marquee />
         <ClientSelector />
         <Metrics />
         <SystemFlow />
