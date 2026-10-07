@@ -63,8 +63,8 @@ const inicial: Datos = {
 };
 
 const inputCls =
-  "w-full rounded-lg border border-cream/12 bg-ink px-4 py-3 text-sm text-cream placeholder:text-mineral/50 transition-colors focus:border-champagne/60 focus:outline-none";
-const labelCls = "mb-1.5 block text-[0.78rem] font-medium text-cream/70";
+  "w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-green focus:outline-none";
+const labelCls = "mb-1.5 block text-[0.8rem] font-medium text-ink/80";
 
 export default function LeadForm() {
   const router = useRouter();
@@ -72,10 +72,6 @@ export default function LeadForm() {
   const [datos, setDatos] = useState<Datos>(inicial);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState("");
-
-  const esEcommerce =
-    datos.tipo === "Vendedor ecommerce" || datos.tipo === "Dropshipper";
-  const cta = ctaPorTipo[datos.tipo] ?? "Enviar solicitud";
 
   // Los botones "Cotizar maquila" llegan con #contacto-maquila:
   // preseleccionamos el perfil y saltamos directo a los datos de contacto.
@@ -90,6 +86,10 @@ export default function LeadForm() {
     window.addEventListener("hashchange", aplicarIntencion);
     return () => window.removeEventListener("hashchange", aplicarIntencion);
   }, []);
+
+  const esEcommerce =
+    datos.tipo === "Vendedor ecommerce" || datos.tipo === "Dropshipper";
+  const cta = ctaPorTipo[datos.tipo] ?? "Enviar solicitud";
 
   const set = (k: keyof Datos) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -151,7 +151,7 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="contacto" className="texture-mineral relative border-t border-cream/6 bg-ink-2 py-24 lg:py-32">
+    <section id="contacto" className="border-t border-line bg-soft py-20 lg:py-28">
       {/* Ancla para los CTAs de maquila (en flujo, altura cero) */}
       <span id="contacto-maquila" className="block h-0" aria-hidden="true" />
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
@@ -162,14 +162,14 @@ export default function LeadForm() {
         />
 
         <Reveal delay={0.1}>
-          <form onSubmit={enviar} className="mt-12 rounded-2xl border border-cream/10 bg-graphite/50 p-6 sm:p-9" noValidate>
+          <form onSubmit={enviar} className="mt-10 rounded-2xl border border-line bg-white p-6 sm:p-9" noValidate>
             {/* Indicador de pasos */}
             <div className="mb-8 flex items-center gap-2" aria-hidden="true">
               {[0, 1, 2].map((i) => (
                 <span
                   key={i}
                   className={`h-1 flex-1 rounded-full transition-colors duration-500 ${
-                    i <= paso ? "bg-champagne" : "bg-cream/10"
+                    i <= paso ? "bg-green" : "bg-line"
                   }`}
                 />
               ))}
@@ -192,12 +192,12 @@ export default function LeadForm() {
               {paso === 0 && (
                 <motion.fieldset
                   key="p0"
-                  initial={{ opacity: 0, x: 12 }}
+                  initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.25 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <legend className="mb-5 font-display text-xl text-cream">
+                  <legend className="mb-5 text-lg font-semibold text-ink">
                     ¿Qué tipo de aliado eres?
                   </legend>
                   <div className="grid gap-2.5 sm:grid-cols-2">
@@ -209,10 +209,10 @@ export default function LeadForm() {
                           setDatos((d) => ({ ...d, tipo: t }));
                           setPaso(1);
                         }}
-                        className={`rounded-lg border px-4 py-3.5 text-left text-sm transition-all ${
+                        className={`rounded-lg border px-4 py-3.5 text-left text-sm font-medium transition-colors ${
                           datos.tipo === t
-                            ? "border-champagne/60 bg-ink text-cream"
-                            : "border-cream/12 text-cream/75 hover:border-cream/30 hover:text-cream"
+                            ? "border-green bg-green-soft text-ink"
+                            : "border-line text-ink/75 hover:border-ink/25 hover:text-ink"
                         }`}
                       >
                         {t}
@@ -225,12 +225,12 @@ export default function LeadForm() {
               {paso === 1 && (
                 <motion.fieldset
                   key="p1"
-                  initial={{ opacity: 0, x: 12 }}
+                  initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.25 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <legend className="mb-5 font-display text-xl text-cream">
+                  <legend className="mb-5 text-lg font-semibold text-ink">
                     Datos de contacto
                   </legend>
                   <div className="grid gap-4 sm:grid-cols-2">
@@ -256,14 +256,14 @@ export default function LeadForm() {
                     </div>
                   </div>
                   <div className="mt-7 flex justify-between">
-                    <button type="button" onClick={() => setPaso(0)} className="text-sm text-mineral transition-colors hover:text-cream">
+                    <button type="button" onClick={() => setPaso(0)} className="text-sm font-medium text-muted transition-colors hover:text-ink">
                       ← Atrás
                     </button>
                     <button
                       type="button"
                       disabled={!paso2Valido}
                       onClick={() => setPaso(2)}
-                      className="rounded-full bg-cream px-6 py-2.5 text-sm font-semibold text-ink transition-all enabled:hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
+                      className="rounded-lg bg-green px-6 py-2.5 text-sm font-semibold text-white transition-colors enabled:hover:bg-green-dark disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       Continuar
                     </button>
@@ -274,12 +274,12 @@ export default function LeadForm() {
               {paso === 2 && (
                 <motion.fieldset
                   key="p2"
-                  initial={{ opacity: 0, x: 12 }}
+                  initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.25 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <legend className="mb-5 font-display text-xl text-cream">
+                  <legend className="mb-5 text-lg font-semibold text-ink">
                     Tu operación
                   </legend>
                   <div className="grid gap-4 sm:grid-cols-2">
@@ -327,19 +327,19 @@ export default function LeadForm() {
                   )}
 
                   {error && (
-                    <p role="alert" className="mt-5 rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-200">
+                    <p role="alert" className="mt-5 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
                       {error}
                     </p>
                   )}
 
                   <div className="mt-7 flex items-center justify-between">
-                    <button type="button" onClick={() => setPaso(1)} className="text-sm text-mineral transition-colors hover:text-cream">
+                    <button type="button" onClick={() => setPaso(1)} className="text-sm font-medium text-muted transition-colors hover:text-ink">
                       ← Atrás
                     </button>
                     <button
                       type="submit"
                       disabled={enviando || !datos.necesidad}
-                      className="rounded-full bg-cream px-7 py-3 text-sm font-semibold text-ink transition-all enabled:hover:-translate-y-0.5 enabled:hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
+                      className="rounded-lg bg-green px-7 py-3 text-sm font-semibold text-white transition-colors enabled:hover:bg-green-dark disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {enviando ? "Enviando…" : cta}
                     </button>

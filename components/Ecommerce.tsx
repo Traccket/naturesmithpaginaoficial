@@ -24,7 +24,7 @@ const beneficios = [
 
 export default function Ecommerce() {
   return (
-    <section id="ecommerce" className="texture-mineral border-t border-cream/6 py-24 lg:py-32">
+    <section id="ecommerce" className="border-t border-line bg-soft py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
@@ -36,18 +36,17 @@ export default function Ecommerce() {
 
             {/* Sello insignia oro */}
             <Reveal delay={0.15}>
-              <div className="mt-10 inline-flex items-center gap-4 rounded-xl border border-champagne/30 bg-graphite/70 px-6 py-5">
-                <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden="true">
-                  <circle cx="24" cy="20" r="13" stroke="#D6CBAA" strokeWidth="1.4" />
-                  <circle cx="24" cy="20" r="9.5" stroke="#D6CBAA" strokeWidth="0.8" opacity="0.5" />
-                  <path d="M24 14.5l1.8 3.6 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6L24 14.5Z" fill="#D6CBAA" />
-                  <path d="M18 31l-3 9 5-2.6L24 42l4-4.6 5 2.6-3-9" stroke="#D6CBAA" strokeWidth="1.4" strokeLinejoin="round" />
+              <div className="mt-9 inline-flex items-center gap-4 rounded-xl border border-line bg-white px-6 py-5">
+                <svg viewBox="0 0 48 48" className="h-11 w-11 text-green" fill="none" aria-hidden="true">
+                  <circle cx="24" cy="20" r="13" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M24 14.5l1.8 3.6 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6L24 14.5Z" fill="currentColor" />
+                  <path d="M18 31l-3 9 5-2.6L24 42l4-4.6 5 2.6-3-9" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                 </svg>
                 <div>
-                  <p className="text-[0.7rem] font-semibold tracking-[0.22em] text-champagne uppercase">
+                  <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-green uppercase">
                     Insignia oro
                   </p>
-                  <p className="mt-1 max-w-[200px] text-[0.82rem] leading-snug text-cream/85">
+                  <p className="mt-1 max-w-[220px] text-[0.85rem] leading-snug text-ink">
                     Bodega destacada en MasterShop
                   </p>
                 </div>
@@ -57,14 +56,14 @@ export default function Ecommerce() {
             <Reveal delay={0.2}>
               <Link
                 href="#contacto"
-                className="mt-8 inline-block rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5"
+                className="mt-7 inline-block rounded-lg bg-green px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-green-dark"
               >
-                Quiero trabajar con Nature Smith como bodega
+                Trabajar con Nature Smith como bodega
               </Link>
             </Reveal>
           </div>
 
-          <Reveal delay={0.1} className="lg:pt-20">
+          <Reveal delay={0.1} className="lg:pt-16">
             <Desplegable items={beneficios} />
           </Reveal>
         </div>

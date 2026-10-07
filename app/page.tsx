@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import ScrollProgress from "@/components/ScrollProgress";
 import ClientSelector from "@/components/ClientSelector";
 import Metrics from "@/components/Metrics";
@@ -25,7 +24,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Marquee />
         <ClientSelector />
         <Metrics />
         <SystemFlow />

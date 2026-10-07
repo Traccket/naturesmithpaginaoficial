@@ -11,14 +11,12 @@ export const metadata: Metadata = {
 
 export default function Terminos() {
   return (
-    <main className="mx-auto max-w-3xl px-5 py-20 lg:px-8">
+    <main className="mx-auto max-w-3xl bg-paper px-5 py-20 lg:px-8">
       <Link href="/" aria-label="Volver al inicio">
         <Logo />
       </Link>
-      <h1 className="mt-12 font-display text-4xl text-cream">
-        Términos y condiciones
-      </h1>
-      <div className="mt-8 space-y-6 text-[0.92rem] leading-relaxed text-mineral">
+      <h1 className="mt-12 text-3xl text-ink">Términos y condiciones</h1>
+      <div className="mt-8 space-y-6 text-[0.95rem] leading-relaxed text-muted">
         <p>
           Este sitio web presenta los servicios de Nature Smith: distribución
           mayorista de productos naturales, operación de bodega para ecommerce
@@ -38,7 +36,7 @@ export default function Terminos() {
           gráficas) pertenece a Nature Smith y no puede reproducirse sin
           autorización.
         </p>
-        <p className="text-[0.8rem] text-mineral/60">
+        <p className="text-[0.8rem] text-muted/70">
           [Pendiente de completar por Nature Smith: razón social, NIT,
           jurisdicción y fecha de actualización.]
         </p>

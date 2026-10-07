@@ -18,22 +18,22 @@ const mensajes = [
 
 export default function Soporte() {
   return (
-    <section className="px-3 py-2 lg:px-5">
-      <div className="mx-auto rounded-[2rem] bg-cream py-24 text-ink lg:rounded-[2.75rem] lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+    <section className="border-t border-line bg-soft py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading
-              light
               kicker="Servicio como diferencial"
               title="El soporte que convierte una bodega en un aliado."
               subtitle="Distribuir es fácil de prometer. Responder rápido, resolver y acompañar cada cierre es lo que sostiene una relación comercial."
             />
             <Reveal delay={0.15}>
-              <ul className="mt-10 space-y-4">
+              <ul className="mt-9 space-y-4">
                 {pilares.map((p) => (
-                  <li key={p} className="flex gap-3 text-[0.95rem] leading-relaxed text-ink/70">
-                    <span className="mt-2.5 h-px w-5 shrink-0 bg-sage" aria-hidden="true" />
+                  <li key={p} className="flex gap-3 text-[0.95rem] leading-relaxed text-muted">
+                    <svg viewBox="0 0 16 16" className="mt-1 h-4 w-4 shrink-0 text-green" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                      <path d="M3 8.5l3.2 3L13 4.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                     {p}
                   </li>
                 ))}
@@ -41,31 +41,31 @@ export default function Soporte() {
             </Reveal>
           </div>
 
-          {/* Centro de operaciones: inbox abstracto */}
+          {/* Mesa comercial: conversación ilustrativa */}
           <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-sm">
-              <div className="flex items-center justify-between border-b border-ink/8 px-6 py-4">
+            <div className="overflow-hidden rounded-2xl border border-line bg-white">
+              <div className="flex items-center justify-between border-b border-line px-6 py-4">
                 <div className="flex items-center gap-3">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage opacity-60" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-sage" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green opacity-50" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green" />
                   </span>
-                  <p className="text-[0.78rem] font-semibold tracking-[0.18em] text-ink/70 uppercase">
+                  <p className="text-[0.78rem] font-semibold tracking-[0.14em] text-ink uppercase">
                     Mesa comercial — en línea
                   </p>
                 </div>
-                <p className="text-[0.7rem] text-ink/40">respuesta ágil</p>
+                <p className="text-[0.72rem] text-muted">respuesta ágil</p>
               </div>
 
               <div className="space-y-3 px-6 py-7">
                 {mensajes.map((m, i) => (
-                  <Reveal key={i} delay={0.15 + i * 0.12}>
+                  <Reveal key={i} delay={0.15 + i * 0.1}>
                     <div className={`flex ${m.de === "ns" ? "justify-end" : "justify-start"}`}>
                       <p
-                        className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-[0.82rem] leading-relaxed ${
+                        className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-[0.84rem] leading-relaxed ${
                           m.de === "ns"
-                            ? "rounded-br-sm bg-sage/15 text-ink/85"
-                            : "rounded-bl-sm bg-ink/5 text-ink/60"
+                            ? "rounded-br-sm bg-green text-white"
+                            : "rounded-bl-sm bg-soft text-ink/75"
                         }`}
                       >
                         {m.texto}
@@ -75,12 +75,11 @@ export default function Soporte() {
                 ))}
               </div>
 
-              <p className="border-t border-ink/8 px-6 py-3 text-[0.68rem] tracking-wide text-ink/35">
+              <p className="border-t border-line px-6 py-3 text-[0.7rem] text-muted/70">
                 Conversación ilustrativa. Sin datos reales de clientes.
               </p>
             </div>
           </Reveal>
-        </div>
         </div>
       </div>
     </section>

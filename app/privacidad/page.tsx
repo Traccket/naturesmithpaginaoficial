@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 
 export default function Privacidad() {
   return (
-    <main className="mx-auto max-w-3xl px-5 py-20 lg:px-8">
+    <main className="mx-auto max-w-3xl bg-paper px-5 py-20 lg:px-8">
       <Link href="/" aria-label="Volver al inicio">
         <Logo />
       </Link>
-      <h1 className="mt-12 font-display text-4xl text-cream">
-        Política de privacidad
-      </h1>
-      <div className="mt-8 space-y-6 text-[0.92rem] leading-relaxed text-mineral">
+      <h1 className="mt-12 text-3xl text-ink">Política de privacidad</h1>
+      <div className="mt-8 space-y-6 text-[0.95rem] leading-relaxed text-muted">
         <p>
           Nature Smith trata los datos personales que recibe a través de este
           sitio (nombre, empresa, ciudad, WhatsApp, correo y detalles de la
@@ -38,7 +36,7 @@ export default function Privacidad() {
           solicitar la supresión de tu información, así como revocar la
           autorización de tratamiento, escribiendo a{" "}
           {site.email ? (
-            <a href={`mailto:${site.email}`} className="text-cream underline decoration-champagne/40 underline-offset-4">
+            <a href={`mailto:${site.email}`} className="text-green underline underline-offset-4">
               {site.email}
             </a>
           ) : (
@@ -46,7 +44,7 @@ export default function Privacidad() {
           )}{" "}
           o a través del canal de WhatsApp publicado en este sitio.
         </p>
-        <p className="text-[0.8rem] text-mineral/60">
+        <p className="text-[0.8rem] text-muted/70">
           [Pendiente de completar por Nature Smith: razón social, NIT, domicilio
           y fecha de entrada en vigencia de esta política.]
         </p>

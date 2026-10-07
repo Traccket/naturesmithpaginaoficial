@@ -1,4 +1,3 @@
-import Link from "next/link";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import Desplegable from "./Desplegable";
@@ -26,7 +25,7 @@ const miniProceso = ["Idea", "Producto", "Presentación", "Producción", "Venta"
 
 export default function Maquilas() {
   return (
-    <section id="maquilas" className="border-t border-cream/6 bg-ink-2 py-24 lg:py-32">
+    <section id="maquilas" className="border-t border-line bg-paper py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
@@ -38,14 +37,12 @@ export default function Maquilas() {
 
             {/* Mini proceso */}
             <Reveal delay={0.15}>
-              <ol className="mt-10 inline-flex flex-wrap items-center gap-y-3 rounded-full border border-cream/10 bg-graphite/40 px-6 py-3.5">
+              <ol className="mt-9 inline-flex flex-wrap items-center gap-y-2 rounded-xl border border-line bg-soft px-5 py-3.5">
                 {miniProceso.map((paso, i) => (
-                  <li key={paso} className="flex items-center text-[0.82rem] font-medium text-cream/85">
+                  <li key={paso} className="flex items-center text-[0.85rem] font-medium text-ink">
                     {paso}
                     {i < miniProceso.length - 1 && (
-                      <svg viewBox="0 0 20 8" className="mx-3 h-2 w-5 stroke-champagne/50" fill="none" aria-hidden="true">
-                        <path d="M0 4h17m0 0-3-3m3 3-3 3" strokeWidth="1" />
-                      </svg>
+                      <span className="mx-3 text-muted/50" aria-hidden="true">→</span>
                     )}
                   </li>
                 ))}
@@ -53,16 +50,18 @@ export default function Maquilas() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <a
-                href="#contacto-maquila"
-                className="mt-8 inline-block rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5"
-              >
-                Cotizar mi maquila
-              </a>
+              <div>
+                <a
+                  href="#contacto-maquila"
+                  className="mt-7 inline-block rounded-lg bg-green px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-green-dark"
+                >
+                  Cotizar mi maquila
+                </a>
+              </div>
             </Reveal>
           </div>
 
-          <Reveal delay={0.1} className="lg:pt-20">
+          <Reveal delay={0.1} className="lg:pt-16">
             <Desplegable items={bloques} />
           </Reveal>
         </div>

@@ -17,57 +17,56 @@ const idealPara = [
 
 export default function Mayoristas() {
   return (
-    <section id="mayoristas" className="px-3 py-2 lg:px-5">
-      <div className="mx-auto rounded-[2rem] bg-cream py-24 text-ink lg:rounded-[2.75rem] lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+    <section id="mayoristas" className="border-t border-line bg-paper py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading
-              light
               kicker="Distribución mayorista"
               title="Catálogo mayorista para tiendas naturistas que necesitan rotación, respaldo y atención real."
             />
             <Reveal delay={0.1}>
-              <ul className="mt-10 space-y-5">
+              <ul className="mt-9 space-y-4">
                 {puntos.map((p) => (
-                  <li key={p} className="flex gap-4 text-[0.95rem] leading-relaxed text-ink/75">
-                    <span className="mt-2.5 h-px w-6 shrink-0 bg-sage" aria-hidden="true" />
+                  <li key={p} className="flex gap-3 text-[0.95rem] leading-relaxed text-muted">
+                    <svg viewBox="0 0 16 16" className="mt-1 h-4 w-4 shrink-0 text-green" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                      <path d="M3 8.5l3.2 3L13 4.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                     {p}
                   </li>
                 ))}
               </ul>
               <Link
                 href="#contacto"
-                className="mt-10 inline-block rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition-all hover:-translate-y-0.5 hover:bg-graphite"
+                className="mt-9 inline-block rounded-lg bg-green px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-green-dark"
               >
                 Solicitar catálogo mayorista
               </Link>
             </Reveal>
           </div>
 
-          <Reveal delay={0.15} className="lg:pt-24">
-            <div className="rounded-2xl border border-ink/10 bg-white/60 p-8 lg:p-10">
-              <p className="text-[0.72rem] font-semibold tracking-[0.28em] text-sage uppercase">
+          <Reveal delay={0.15} className="lg:pt-16">
+            <div className="rounded-2xl border border-line bg-soft p-8 lg:p-10">
+              <p className="text-[0.72rem] font-semibold tracking-[0.2em] text-green uppercase">
                 Ideal para
               </p>
-              <ul className="mt-6 divide-y divide-ink/8">
+              <ul className="mt-5 divide-y divide-line">
                 {idealPara.map((item, i) => (
-                  <li key={item} className="flex items-baseline gap-4 py-4">
-                    <span className="font-display text-lg text-champagne">
+                  <li key={item} className="flex items-baseline gap-4 py-3.5">
+                    <span className="text-[0.8rem] font-semibold text-green">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-display text-xl text-ink">{item}</span>
+                    <span className="text-lg font-medium text-ink">{item}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-[0.85rem] leading-relaxed text-ink/55">
+              <p className="mt-5 text-[0.85rem] leading-relaxed text-muted">
                 Si tu negocio vende bienestar en punto físico, el catálogo
                 mayorista de Nature Smith está construido para tu vitrina y tu
                 margen.
               </p>
             </div>
           </Reveal>
-        </div>
         </div>
       </div>
     </section>

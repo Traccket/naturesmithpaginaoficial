@@ -10,16 +10,14 @@ export default function Faq() {
   const [abierta, setAbierta] = useState<number | null>(0);
 
   return (
-    <section className="px-3 py-2 lg:px-5">
-      <div className="mx-auto rounded-[2rem] bg-cream py-24 text-ink lg:rounded-[2.75rem] lg:py-32">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+    <section className="border-t border-line bg-paper py-20 lg:py-28">
+      <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <SectionHeading
-          light
           kicker="Preguntas frecuentes"
           title="Lo que los aliados suelen preguntar antes de empezar."
         />
 
-        <div className="mt-12 divide-y divide-ink/10 border-y border-ink/10">
+        <div className="mt-10 divide-y divide-line border-y border-line">
           {faqs.map((f, i) => {
             const open = abierta === i;
             return (
@@ -32,14 +30,14 @@ export default function Faq() {
                     aria-controls={`faq-${i}`}
                     className="flex w-full items-center justify-between gap-6 py-5 text-left"
                   >
-                    <span className={`font-display text-lg transition-colors sm:text-xl ${open ? "text-ink" : "text-ink/70 hover:text-ink"}`}>
+                    <span className={`text-[1.02rem] font-semibold transition-colors ${open ? "text-ink" : "text-ink/70 hover:text-ink"}`}>
                       {f.q}
                     </span>
                     <svg
                       viewBox="0 0 16 16"
-                      className={`h-4 w-4 shrink-0 stroke-sage transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+                      className={`h-4 w-4 shrink-0 stroke-green transition-transform duration-300 ${open ? "rotate-45" : ""}`}
                       fill="none"
-                      strokeWidth="1.4"
+                      strokeWidth="1.6"
                       aria-hidden="true"
                     >
                       <path d="M8 2v12M2 8h12" />
@@ -53,12 +51,10 @@ export default function Faq() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 text-[0.92rem] leading-relaxed text-ink/65">
-                        {f.a}
-                      </p>
+                      <p className="pb-6 text-[0.92rem] leading-relaxed text-muted">{f.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -69,11 +65,11 @@ export default function Faq() {
 
         {/* Bloque semántico "Qué es Nature Smith" para buscadores y asistentes de IA */}
         <Reveal delay={0.1}>
-          <div className="mt-14 rounded-2xl border border-ink/10 bg-white p-7 lg:p-9">
-            <h3 className="text-[0.72rem] font-semibold tracking-[0.28em] text-sage uppercase">
+          <div className="mt-12 rounded-2xl border border-line bg-soft p-7 lg:p-9">
+            <h3 className="text-[0.72rem] font-semibold tracking-[0.2em] text-green uppercase">
               Qué es Nature Smith
             </h3>
-            <p className="mt-4 text-[0.95rem] leading-relaxed text-ink/70">
+            <p className="mt-4 text-[0.95rem] leading-relaxed text-muted">
               Nature Smith es una empresa colombiana distribuidora de productos
               naturales que trabaja con tiendas naturistas, ecommerce,
               dropshipping y maquilas. Ofrece catálogo mayorista, productos
@@ -82,7 +78,6 @@ export default function Faq() {
             </p>
           </div>
         </Reveal>
-        </div>
       </div>
     </section>
   );
