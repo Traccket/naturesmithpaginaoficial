@@ -49,7 +49,14 @@ const jsonLd = {
       description: site.descripcion,
       areaServed: { "@type": "Country", name: "Colombia" },
       ...(sameAs.length ? { sameAs } : {}),
-      ...(site.email ? { email: site.email } : {}),
+      telephone: "+573206854344",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+573206854344",
+        contactType: "sales",
+        areaServed: "CO",
+        availableLanguage: "es",
+      },
     },
     {
       "@type": "WebSite",

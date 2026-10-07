@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import { site, waLink } from "@/lib/site";
 
 const TURNSTILE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -160,6 +161,20 @@ export default function LeadForm() {
           title="Cuéntanos qué quieres construir."
           subtitle="Tres pasos cortos. Un asesor de Nature Smith revisa tu caso y te contacta por WhatsApp."
         />
+        <Reveal delay={0.05}>
+          <p className="mt-4 text-[0.9rem] text-muted">
+            ¿Prefieres escribirnos directo? Nuestro único canal de atención es
+            WhatsApp:{" "}
+            <a
+              href={waLink("Hola, quiero hablar con un asesor de Nature Smith.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-green underline underline-offset-4"
+            >
+              {site.telefonoDisplay}
+            </a>
+          </p>
+        </Reveal>
 
         <Reveal delay={0.1}>
           <form onSubmit={enviar} className="mt-10 rounded-2xl border border-line bg-white p-6 sm:p-9" noValidate>

@@ -63,18 +63,14 @@ export default function Footer() {
                   href={waLink("Hola, vengo del sitio web de Nature Smith.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/65 transition-colors hover:text-white"
+                  className="font-semibold text-white transition-colors hover:text-white/80"
                 >
-                  WhatsApp comercial
+                  WhatsApp: {site.telefonoDisplay}
                 </a>
               </li>
-              {site.email && (
-                <li>
-                  <a href={`mailto:${site.email}`} className="text-white/65 transition-colors hover:text-white">
-                    {site.email}
-                  </a>
-                </li>
-              )}
+              <li className="text-[0.78rem] text-white/45">
+                Atención comercial únicamente por WhatsApp.
+              </li>
               {redes.map((r) => (
                 <li key={r.label}>
                   <a href={r.href} target="_blank" rel="noopener noreferrer" className="text-white/65 transition-colors hover:text-white">

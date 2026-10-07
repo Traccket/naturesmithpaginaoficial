@@ -1,86 +1,163 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-/**
- * Silueta de Colombia proyectada desde coordenadas geográficas reales
- * (equirectangular) y ciudades ubicadas por su latitud/longitud verdadera.
- */
+/** Silueta detallada de Colombia (viewBox 0 0 420 500). */
 const SILUETA =
-  "M188.3 16.3 L200.0 20.0 L196.3 33.7 L181.3 38.7 L176.2 22.5 L157.3 39.0 L124.8 46.5 L108.8 51.2 L92.5 67.5 L88.7 90.0 L72.5 102.5 L60.0 125.0 L47.5 112.0 L32.5 140.0 L45.0 177.5 L51.2 230.0 L27.5 265.0 L11.3 282.5 L7.5 305.0 L37.5 307.5 L57.5 317.5 L90.0 332.5 L100.0 350.0 L135.0 380.0 L177.5 402.5 L220.0 425.0 L231.5 433.0 L241.3 422.5 L243.8 357.5 L251.2 310.0 L243.8 300.0 L241.3 285.0 L302.5 280.0 L290.0 257.5 L285.0 215.0 L293.0 172.7 L252.5 170.0 L211.3 150.0 L177.5 132.5 L170.0 120.0 L156.3 97.5 L157.5 77.5 L175.0 53.8 L193.8 31.3 Z";
+  "M 143.5 365 L 131.9 358.6 L 118.5 349.5 L 110.7 353.9 L 87.6 350.1 L 81 338.4 L 75.9 338.8 L 48.7 323.3 L 45 314.8 L 55.1 312.8 L 53.9 299.1 L 60.3 289.2 L 73.8 287.4 L 85.3 270.3 L 95.7 256 L 85.7 249.5 L 90.8 233.7 L 84.7 208.8 L 90.5 201.6 L 86.2 178.6 L 75.2 164.1 L 78.7 150.8 L 87.5 152.8 L 92.6 144.7 L 86.3 128.6 L 89.6 124.6 L 103.7 125.5 L 124.1 106.5 L 135.3 103.6 L 135.6 94.6 L 140.6 71.5 L 156.2 58.9 L 173.4 58.4 L 175.6 52.7 L 196.9 55 L 218.3 41.2 L 228.9 35.1 L 242.1 22 L 251.8 23.7 L 258.9 30.8 L 253.7 40 L 236.1 44.6 L 229.2 58.2 L 218.7 66 L 210.8 76.1 L 207.4 95.6 L 199.9 111.5 L 213.9 113.3 L 217.4 125.9 L 223.5 131.9 L 225.6 142.8 L 222.4 152.9 L 223.3 158.6 L 230 160.9 L 236.5 170.4 L 271.6 167.8 L 287.4 171.2 L 306.6 194.7 L 317.6 191.8 L 337.2 193.2 L 352.7 190.1 L 362.4 194.8 L 357.5 209.5 L 351.4 218.6 L 349.3 238.2 L 354.7 256.3 L 362.5 264.4 L 363.4 270.5 L 349.6 284 L 359.5 290 L 366.7 299.6 L 375 326.7 L 369.9 330.1 L 364.6 314 L 357 305.4 L 348 314.8 L 294.9 314.2 L 295.3 331.2 L 311.2 334 L 310.3 344.5 L 304.9 341.6 L 289.5 346.1 L 289.4 365.9 L 301.5 375.9 L 305.7 391.5 L 305.1 403.3 L 292.8 478 L 279.2 463.5 L 271.1 462.9 L 288.6 435.1 L 267.8 422.4 L 251.4 424.7 L 241.6 420 L 226.6 427.2 L 206.3 423.8 L 190.2 395.2 L 177.6 388.2 L 168.9 375.3 L 150.8 362.4 L 143.5 365 Z";
 
-const nodos = [
-  { ciudad: "Barranquilla", x: 110.0, y: 53.5 },
-  { ciudad: "Cartagena", x: 92.2, y: 67.7, labelIzq: true },
-  { ciudad: "Bucaramanga", x: 151.8, y: 149.3 },
-  { ciudad: "Medellín", x: 91.0, y: 171.3, labelIzq: true },
-  { ciudad: "Pereira", x: 87.8, y: 207.2, labelIzq: true },
-  { ciudad: "Bogotá", x: 128.3, y: 209.8, hub: true },
-  { ciudad: "Cali", x: 66.8, y: 241.2, labelIzq: true },
-] as const;
+type Nodo = {
+  ciudad: string;
+  x: number;
+  y: number;
+  hub?: boolean;
+  labelIzq?: boolean;
+};
+
+/** Ciudades en el espacio del mapa (posición geográfica real). */
+const nodos: Nodo[] = [
+  { ciudad: "Bogotá", x: 179, y: 232.5, hub: true },
+  { ciudad: "Medellín", x: 137.9, y: 190.8, labelIzq: true },
+  { ciudad: "Cali", x: 112, y: 266.8, labelIzq: true },
+  { ciudad: "Barranquilla", x: 159.3, y: 62.1, labelIzq: true },
+  { ciudad: "Cartagena", x: 140.6, y: 77.8, labelIzq: true },
+  { ciudad: "Bucaramanga", x: 204.9, y: 167 },
+  { ciudad: "Pereira", x: 134.4, y: 229.7, labelIzq: true },
+];
+
+const hub = nodos[0];
 
 export default function MapaColombia() {
   const reduce = useReducedMotion();
-  const hub = nodos.find((n) => "hub" in n && n.hub)!;
+  const [activa, setActiva] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+
+  // Recorrido automático por las ciudades hasta que el usuario interactúa
+  useEffect(() => {
+    if (!autoplay || reduce) return;
+    const t = setInterval(() => setActiva((a) => (a + 1) % nodos.length), 2600);
+    return () => clearInterval(t);
+  }, [autoplay, reduce]);
+
+  function seleccionar(i: number) {
+    setAutoplay(false);
+    setActiva(i);
+  }
 
   return (
     <section className="border-t border-line bg-paper py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading
               kicker="Cobertura"
               title="Operación nacional con visión regional."
-              subtitle="Nature Smith atiende aliados en Colombia y avanza hacia nuevas oportunidades en Latinoamérica."
+              subtitle="Nature Smith despacha a las principales ciudades y municipios de Colombia a través de aliados logísticos, y avanza hacia nuevas oportunidades en Latinoamérica."
             />
-            <Reveal delay={0.15}>
-              <ul className="mt-9 space-y-4 text-[0.92rem] leading-relaxed text-muted">
-                <li className="flex gap-3">
-                  <svg viewBox="0 0 16 16" className="mt-1 h-4 w-4 shrink-0 text-green" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                    <path d="M3 8.5l3.2 3L13 4.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  Despachos a las principales ciudades y municipios del país a
-                  través de aliados logísticos.
-                </li>
-                <li className="flex gap-3">
-                  <svg viewBox="0 0 16 16" className="mt-1 h-4 w-4 shrink-0 text-green" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                    <path d="M3 8.5l3.2 3L13 4.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  Una sola operación para mayoreo, ecommerce y dropshipping: el
-                  mismo respaldo sin importar el canal.
-                </li>
-                <li className="flex gap-3">
-                  <svg viewBox="0 0 16 16" className="mt-1 h-4 w-4 shrink-0 text-green" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                    <path d="M3 8.5l3.2 3L13 4.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  En expansión hacia nuevos mercados de Latinoamérica.
-                </li>
-              </ul>
+
+            {/* Chips interactivos de ciudad */}
+            <Reveal delay={0.1}>
+              <div className="mt-9 flex flex-wrap gap-2.5">
+                {nodos.map((n, i) => {
+                  const on = activa === i;
+                  return (
+                    <button
+                      key={n.ciudad}
+                      type="button"
+                      onClick={() => seleccionar(i)}
+                      onMouseEnter={() => seleccionar(i)}
+                      aria-pressed={on}
+                      className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-[0.85rem] font-semibold transition-all duration-200 ${
+                        on
+                          ? "border-green bg-green text-white shadow-[0_4px_16px_rgba(30,90,56,0.25)]"
+                          : "border-line bg-white text-ink/75 hover:border-green/50 hover:text-ink"
+                      }`}
+                    >
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                        <path d="M8 14.5s4.5-4.2 4.5-7.5a4.5 4.5 0 1 0-9 0c0 3.3 4.5 7.5 4.5 7.5Z" strokeLinejoin="round" />
+                        <circle cx="8" cy="7" r="1.6" />
+                      </svg>
+                      {n.ciudad}
+                      {n.hub && (
+                        <span className={`rounded-full px-2 py-0.5 text-[0.62rem] font-bold tracking-wide uppercase ${on ? "bg-white/20 text-white" : "bg-green-soft text-green"}`}>
+                          Sede
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+                <span className="flex items-center gap-2 rounded-full border border-dashed border-line px-4 py-2.5 text-[0.85rem] font-medium text-muted">
+                  + municipios de todo el país
+                </span>
+              </div>
             </Reveal>
           </div>
 
+          {/* Tablero del mapa */}
           <Reveal delay={0.1}>
-            <div className="relative mx-auto max-w-sm rounded-2xl border border-line bg-soft p-8">
+            <div
+              className="relative overflow-hidden rounded-2xl border border-line bg-white p-6 lg:p-8"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(30,90,56,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(30,90,56,0.045) 1px, transparent 1px)",
+                backgroundSize: "28px 28px",
+              }}
+            >
+              {/* Estado activo del tablero */}
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green opacity-50" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green" />
+                  </span>
+                  <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-ink uppercase">
+                    Red de distribución
+                  </p>
+                </div>
+                <motion.p
+                  key={activa}
+                  initial={reduce ? undefined : { opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-full bg-green-soft px-3 py-1 text-[0.75rem] font-semibold text-green"
+                >
+                  {nodos[activa].ciudad}
+                </motion.p>
+              </div>
+
               <svg
-                viewBox="0 0 320 460"
+                viewBox="0 0 420 500"
                 fill="none"
                 className="w-full"
                 role="img"
-                aria-label="Mapa de Colombia con nodos de distribución en las principales ciudades"
+                aria-label="Mapa de Colombia con la red de distribución de Nature Smith"
               >
-                <path
+                <defs>
+                  <radialGradient id="relleno-mapa" cx="45%" cy="45%" r="70%">
+                    <stop offset="0%" stopColor="rgba(30,90,56,0.10)" />
+                    <stop offset="100%" stopColor="rgba(30,90,56,0.03)" />
+                  </radialGradient>
+                </defs>
+
+                {/* Silueta */}
+                <motion.path
                   d={SILUETA}
                   stroke="#1E5A38"
-                  strokeWidth="1.3"
+                  strokeWidth="1.6"
                   strokeLinejoin="round"
-                  fill="rgba(30,90,56,0.05)"
+                  fill="url(#relleno-mapa)"
+                  initial={reduce ? undefined : { pathLength: 0 }}
+                  whileInView={reduce ? undefined : { pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 2.2, ease: "easeInOut" }}
                 />
 
-                {nodos
-                  .filter((n) => !("hub" in n && n.hub))
-                  .map((n, i) => (
+                {/* Rutas desde Bogotá */}
+                {nodos.slice(1).map((n, i) => {
+                  const on = activa === i + 1;
+                  return (
                     <motion.line
                       key={n.ciudad}
                       x1={hub.x}
@@ -88,44 +165,52 @@ export default function MapaColombia() {
                       x2={n.x}
                       y2={n.y}
                       stroke="#1E5A38"
-                      strokeWidth="0.7"
-                      strokeDasharray="3 4"
-                      opacity="0.35"
+                      strokeWidth={on ? 1.6 : 0.8}
+                      strokeDasharray="4 5"
+                      opacity={on ? 0.85 : 0.3}
                       initial={reduce ? undefined : { pathLength: 0 }}
                       whileInView={reduce ? undefined : { pathLength: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1.2, delay: 0.3 + i * 0.15 }}
+                      transition={{ duration: 1, delay: 0.8 + i * 0.12 }}
+                      style={{ transition: "opacity .3s, stroke-width .3s" }}
                     />
-                  ))}
+                  );
+                })}
 
-                {nodos.map((n) => {
-                  const esHub = "hub" in n && n.hub;
-                  const izq = "labelIzq" in n && n.labelIzq;
+                {/* Nodos */}
+                {nodos.map((n, i) => {
+                  const on = activa === i;
                   return (
-                    <g key={n.ciudad}>
-                      {!reduce && (
-                        <circle
-                          cx={n.x}
-                          cy={n.y}
-                          r={esHub ? 10 : 6}
-                          fill="none"
-                          stroke="#1E5A38"
-                          strokeWidth="0.8"
-                          opacity="0.4"
-                        >
-                          <animate attributeName="r" values={esHub ? "6;14;6" : "4;9;4"} dur="3.5s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" values="0.4;0;0.4" dur="3.5s" repeatCount="indefinite" />
+                    <g
+                      key={n.ciudad}
+                      onClick={() => seleccionar(i)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {/* Pulso del nodo activo */}
+                      {on && !reduce && (
+                        <circle cx={n.x} cy={n.y} r="7" fill="none" stroke="#1E5A38" strokeWidth="1">
+                          <animate attributeName="r" values="5;15" dur="1.6s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.6;0" dur="1.6s" repeatCount="indefinite" />
                         </circle>
                       )}
-                      <circle cx={n.x} cy={n.y} r={esHub ? 4 : 2.5} fill="#1E5A38" />
+                      <circle
+                        cx={n.x}
+                        cy={n.y}
+                        r={on ? 6 : n.hub ? 4.5 : 3}
+                        fill={on ? "#1E5A38" : "#fff"}
+                        stroke="#1E5A38"
+                        strokeWidth="1.6"
+                        style={{ transition: "all .3s" }}
+                      />
                       <text
-                        x={izq ? n.x - 9 : n.x + 9}
-                        y={n.y + 3.5}
-                        textAnchor={izq ? "end" : "start"}
-                        fill="#5C655F"
-                        fontSize="11"
+                        x={n.labelIzq ? n.x - 11 : n.x + 11}
+                        y={n.y + 4}
+                        textAnchor={n.labelIzq ? "end" : "start"}
+                        fill={on ? "#141A16" : "#5C655F"}
+                        fontSize={on ? 13 : 11.5}
+                        fontWeight={on ? 700 : 500}
                         fontFamily="var(--font-sans)"
-                        fontWeight="500"
+                        style={{ transition: "all .3s" }}
                       >
                         {n.ciudad}
                       </text>
@@ -133,7 +218,8 @@ export default function MapaColombia() {
                   );
                 })}
               </svg>
-              <p className="mt-4 text-center text-[0.72rem] font-semibold tracking-[0.2em] text-muted/70 uppercase">
+
+              <p className="mt-3 text-center text-[0.72rem] font-semibold tracking-[0.18em] text-muted/70 uppercase">
                 En expansión hacia Latinoamérica
               </p>
             </div>
