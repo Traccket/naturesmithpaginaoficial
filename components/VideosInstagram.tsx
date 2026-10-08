@@ -53,7 +53,12 @@ export default function VideosInstagram() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {codigos.slice(0, 6).map((codigo, i) => (
             <Reveal key={codigo} delay={i * 0.08}>
-              <div className="overflow-hidden rounded-2xl border border-line bg-white">
+              {/* El contenedor recorta el pie del embed (likes/caption):
+                  solo quedan visibles el encabezado del perfil y el video. */}
+              <div
+                className="relative overflow-hidden rounded-2xl border border-line bg-white"
+                style={{ paddingTop: "calc(125% + 54px)" }}
+              >
                 <iframe
                   src={`https://www.instagram.com/reel/${codigo}/embed/`}
                   title={`Video de Nature Smith en Instagram (${i + 1})`}
@@ -61,7 +66,8 @@ export default function VideosInstagram() {
                   allow="encrypted-media; picture-in-picture; web-share"
                   allowFullScreen
                   scrolling="no"
-                  className="aspect-[9/16] w-full border-0"
+                  className="absolute top-0 left-0 w-full border-0"
+                  style={{ height: "calc(100% + 220px)" }}
                 />
               </div>
             </Reveal>
