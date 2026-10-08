@@ -1,6 +1,7 @@
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import Desplegable from "./Desplegable";
+import FormatosMaquila from "./FormatosMaquila";
 
 const bloques = [
   {
@@ -65,6 +66,8 @@ export default function Maquilas() {
             <Desplegable items={bloques} />
           </Reveal>
         </div>
+
+        <FormatosMaquila />
       </div>
     </section>
   );
