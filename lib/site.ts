@@ -19,6 +19,14 @@ export const site = {
     "Nature Smith es una empresa colombiana distribuidora de productos naturales que trabaja con tiendas naturistas, ecommerce, dropshipping y maquilas. Ofrece catálogo mayorista, productos exclusivos para venta digital, soporte comercial y operación de bodega para aliados en Colombia.",
 } as const;
 
+/**
+ * Reels de Instagram que se muestran en la sección de videos.
+ * Pegar aquí los enlaces completos (desde la app: ⋯ → Copiar enlace), ej.:
+ *   "https://www.instagram.com/reel/ABC123xyz/"
+ * La sección solo aparece cuando hay al menos un enlace.
+ */
+export const reelsInstagram: string[] = [];
+
 export function waLink(text: string): string {
   const msg = encodeURIComponent(text);
   return site.whatsapp

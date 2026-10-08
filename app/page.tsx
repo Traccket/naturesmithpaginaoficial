@@ -10,6 +10,7 @@ import Maquilas from "@/components/Maquilas";
 import Productos from "@/components/Productos";
 import MapaColombia from "@/components/MapaColombia";
 import Soporte from "@/components/Soporte";
+import VideosInstagram from "@/components/VideosInstagram";
 import Confianza from "@/components/Confianza";
 import LeadForm from "@/components/LeadForm";
 import Faq from "@/components/Faq";
@@ -33,6 +34,7 @@ export default function Home() {
         <Productos />
         <MapaColombia />
         <Soporte />
+        <VideosInstagram />
         <Confianza />
         <LeadForm />
         <Faq />
