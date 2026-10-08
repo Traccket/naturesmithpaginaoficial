@@ -11,7 +11,9 @@ export const site = {
   email: process.env.NEXT_PUBLIC_EMAIL ?? "naturesmith77@gmail.com",
   ciudad: process.env.NEXT_PUBLIC_CIUDAD ?? "Colombia",
   redes: {
-    instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? "",
+    instagram:
+      process.env.NEXT_PUBLIC_INSTAGRAM ??
+      "https://www.instagram.com/nature_smith_oficial/",
     facebook: process.env.NEXT_PUBLIC_FACEBOOK ?? "",
     tiktok: process.env.NEXT_PUBLIC_TIKTOK ?? "",
   },
@@ -25,7 +27,14 @@ export const site = {
  *   "https://www.instagram.com/reel/ABC123xyz/"
  * La sección solo aparece cuando hay al menos un enlace.
  */
-export const reelsInstagram: string[] = [];
+export const reelsInstagram: string[] = [
+  "https://www.instagram.com/reel/DQ7zW0MDb36/",
+  "https://www.instagram.com/reel/DT-2XTtCXBk/",
+  "https://www.instagram.com/reel/DaBX_Z7Jh4V/",
+  "https://www.instagram.com/reel/DajHTdWJ8NK/",
+  "https://www.instagram.com/reel/DcbOyKJx3QL/",
+  "https://www.instagram.com/reel/DdkJxV6JWDN/",
+];
 
 export function waLink(text: string): string {
   const msg = encodeURIComponent(text);

@@ -51,7 +51,7 @@ export default function VideosInstagram() {
         </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {codigos.slice(0, 3).map((codigo, i) => (
+          {codigos.slice(0, 6).map((codigo, i) => (
             <Reveal key={codigo} delay={i * 0.08}>
               <div className="overflow-hidden rounded-2xl border border-line bg-white">
                 <iframe
