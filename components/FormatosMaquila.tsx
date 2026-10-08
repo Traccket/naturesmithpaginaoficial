@@ -38,6 +38,10 @@ const productos: Array<{ src: string; alt: string; detalle: string; formato: For
   { src: "vitcalpro-sticks", alt: "Caja de sticks de bebida vitamínica de 15 mL", detalle: "Caja x15 sticks", formato: "Sachets y sticks" },
   { src: "cloruro-magnesio-sticks", alt: "Caja de sticks de cloruro de magnesio con colágeno de 15 mL", detalle: "Caja x15 sticks", formato: "Sachets y sticks" },
   { src: "colnclin-fibra", alt: "Fibra a base de linaza con frutas en doypack de 450 g", detalle: "Doypack 450 g", formato: "Fibras" },
+  { src: "linaza-dorada-fibra", alt: "Linaza dorada con fibras de frutas, semillas de chía y psyllium en doypack de 450 g", detalle: "Doypack 450 g", formato: "Fibras" },
+  { src: "clorofila-bebida", alt: "Bebida con clorofila y vitaminas en botella de 500 mL", detalle: "Bebida 500 mL", formato: "Líquidos" },
+  { src: "nrgy10-shot", alt: "Shot energético de 60 mL con caja de 6 unidades", detalle: "Shot 60 mL · caja x6", formato: "Líquidos" },
+  { src: "cloruro-magnesio-sachets", alt: "Cloruro de magnesio en polvo, sachet de 15 g con caja de 15 unidades", detalle: "Sachet 15 g · caja x15", formato: "Sachets y sticks" },
 ];
 
 const formatos: Array<"Todos" | Formato> = [
