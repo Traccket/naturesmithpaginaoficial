@@ -5,7 +5,7 @@
 
 export const site = {
   name: "Nature Smith",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturesmith.com.co",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturesmith.co",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "573206854344",
   telefonoDisplay: "+57 320 685 4344",
   email: process.env.NEXT_PUBLIC_EMAIL ?? "naturesmith77@gmail.com",

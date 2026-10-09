@@ -48,6 +48,24 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    return [
+      // La URL antigua de Vercel redirige al dominio oficial
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "naturesmith.vercel.app" }],
+        destination: "https://naturesmith.co/:path*",
+        permanent: true,
+      },
+      // www → dominio principal
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.naturesmith.co" }],
+        destination: "https://naturesmith.co/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
