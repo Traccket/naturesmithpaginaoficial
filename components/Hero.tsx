@@ -35,7 +35,7 @@ export default function Hero() {
           {...entrada(0)}
           className="mb-5 text-[0.78rem] font-semibold tracking-[0.22em] text-green uppercase"
         >
-          Distribuidora de productos naturales · Colombia
+          Nature Smith · Distribuidora de productos naturales en Colombia
         </motion.p>
 
         <motion.h1
